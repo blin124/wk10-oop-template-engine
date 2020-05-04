@@ -101,7 +101,7 @@ In addition to `Employee`'s properties and methods, `Manager` will also have:
 
   * officeNumber
 
-  * getRole() // Overridden to return 'Manager'
+  * getRole() // Overwrite to return 'Manager'
 
 In addition to `Employee`'s properties and methods, `Engineer` will also have:
 
@@ -109,7 +109,7 @@ In addition to `Employee`'s properties and methods, `Engineer` will also have:
 
   * getGithub()
 
-  * getRole() // Overridden to return 'Engineer'
+  * getRole() // Overwrite to return 'Engineer'
 
 In addition to `Employee`'s properties and methods, `Intern` will also have:
 
@@ -117,7 +117,7 @@ In addition to `Employee`'s properties and methods, `Intern` will also have:
 
   * getSchool()
 
-  * getRole() // Overridden to return 'Intern'
+  * getRole() // Overwrite to return 'Intern'
 
 ### User input
 
