@@ -10,8 +10,8 @@
 
   ## Screenshots of project / Gifs of project:
     ![A screenshot of the team.html file within the output folder with example of prompts and answers by user]
-    (/screenshots/html-with-prompts-and-answers.png)
-    ![team.html web-page](/screenshots/webpage.png)
+    (../screenshots/html-with-prompts-and-answers.png)
+    ![team.html web-page](../screenshots/webpage.png)
 
   ## Usage
   - To allow users to be able to create teams on a website.
