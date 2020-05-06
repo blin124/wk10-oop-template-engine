@@ -19,10 +19,10 @@
   ---
 
   ## Installation dependencies
-  [https://img.shields.io/badge/npm-install-green]
+  ![alt-tex](https://img.shields.io/badge/npm-install-green)
 
   ### Test run command
-  [https://img.shields.io/badge/npm-test-brightgreen]
+  ![alt-tex](https://img.shields.io/badge/npm-test-brightgreen)
 
   ---
 
