@@ -8,22 +8,115 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
+// inside of buildTeam method, needs to call to render and receive all members
+// buildTeam() = fs.writeFileAsync(filname, render(allMembers), "utf-8")
+
 const render = require("./lib/htmlRenderer");
+const allMembers = [];
 
 
-// Write code to use inquirer to gather information about the development team members,
-// and to create objects for each team member (using the correct classes as blueprints!)
-inquirer 
+function createManager() {
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            message: "What is your name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Please enter your ID.",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is your email address?",
+            // regular expression
+            // "check value"
+            // validate: "",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is your office number?",
+            name: "officeNumber"
+        }
+    ])
+    .then(answers => {
+        const manager = new Manager(answers.name, answers.id, answers.email, answers.officeNumber);
+        allMembers.push(manager);
+        createTeam()
+    })
+}
+
+function createTeam() {
+    inquirer
+    .prompt([
+        {
+            type: "list",
+            message: "What type of member would you like to add?",
+            choices: [
+                "Engineer",
+                "Intern",
+                "Nothing else"
+            ],
+            name: "type"
+        }
+    ])
+    .then(answers => {
+        if (answers.type === "Engineer") {
+            addEngineer()
+        } else if (answers.type === "Intern") {
+            addIntern()
+        } else {
+            // htmls go into buildTeam
+            // last thing is buildTeam 
+            // call to a method and push all members into that method
+            buildTeam()
+        }
+    })
+}
+
+function addEngineer() {
+    inquirer
+    .prompt([
+        {
+            type: "input",
+            message: "What is your name?",
+            name: "name"
+        },
+        {
+            type: "input",
+            message: "Please enter your ID.",
+            name: "id"
+        },
+        {
+            type: "input",
+            message: "What is your email address?",
+            name: "email"
+        },
+        {
+            type: "input",
+            message: "What is your github username?",
+            name: "github",
+        }
+    ])
+    .then(answers => {
+        const engineer = new Engineer(answers.name, answers.id, answers.email, answers.github);
+        allMembers.push(engineer);
+
+        createTeam();
+    })
+}
+
+function addIntern() {
+    inquirer 
     .prompt ([
+        
         {
             type: "input",
             message: "What is your name?",
             name: "name",
-        },
-        {
-            type: "input",
-            message: "What is your role?",
-            name: "role",
         },
         {
             type: "input",
@@ -34,106 +127,28 @@ inquirer
             type: "input",
             message: "What is your email address?",
             name: "email",
-        }
-        // manager.html
-        /*{
-            type: "input",
-            message: "What is your office number?",
-            name: "officeNumber",
         },
-        // engineer
-        {
-            type: "input",
-            message: "What is your github username?",
-            name: "github",
-        },
-        // intern
         {
             type: "input",
             message: "What is your school name?",
             name: "school",
-        },*/
-
+        }
     ])
-// After the user has input all employees desired, call the `render` function (required
-// above) and pass in an array containing all employee objects; the `render` function will
-// generate and return a block of HTML including templated divs for each employee!
     .then(answers => {
-        render(answers);
-        console.log(answers);
-        if (answers.role === "manager") {
-            inquirer
-            .prompt ([{
-                type: "input",
-                message: "What is your office number?",
-                name: "officeNumber",
-            }])
-        }
-        else if (answers.role === "engineer") {
-            inquirer
-            .prompt ([{
-                type: "input",
-                message: "What is your github username?",
-                name: "github",
-            }])
-        }
-        else if (answers.role === "intern") {
-            inquirer
-            .prompt ([{
-                type: "input",
-                message: "What is your school name?",
-                name: "school",
-            }])
-        }
-    })
+        const intern = new Intern(answers.name, answers.id, answers.email, answers.school);
+        allMembers.push(intern);
 
-// After you have your html, you're now ready to create an HTML file using the HTML
-// returned from the `render` function. Now write it to a file named `team.html` in the
-// `output` folder. You can use the variable `outputPath` above target this location.
-    fs.writeFile(outputPath, render(answers), function(err) {
+        createTeam();
+    })
+}
+
+function buildTeam() {
+    fs.writeFile(outputPath, render(allMembers), function(err) {
         if (err) {
             return console.log(err);
         }
         console.log("Success!");
     })
-    
-// Hint: you may need to check if the `output` folder exists and create it if it
-// does not.
-
-// HINT: each employee type (manager, engineer, or intern) has slightly different
-// information; write your code to ask different questions via inquirer depending on
-// employee type.
-
-// HINT: make sure to build out your classes first! Remember that your Manager, Engineer,
-// and Intern classes should all extend from a class named Employee; see the directions
-// for further information. Be sure to test out each class and verify it generates an
-// object with the correct structure and methods. This structure will be crucial in order
-// for the provided `render` function to work! ```
-
-// class is a template of obj
-
-/*
-class Employee{
-
 }
 
-let employee = new Employee
-
-class Manager{
-
-}
-
-let manager = new Manager
-
-class Engineer{
-
-}
-
-let engineer = new Engineer
-
-class Intern{
-
-}
-
-let intern = new Intern
-*/
+createManager();
