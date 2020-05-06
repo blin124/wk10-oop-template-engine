@@ -8,9 +8,6 @@ const fs = require("fs");
 const OUTPUT_DIR = path.resolve(__dirname, "output");
 const outputPath = path.join(OUTPUT_DIR, "team.html");
 
-// inside of buildTeam method, needs to call to render and receive all members
-// buildTeam() = fs.writeFileAsync(filname, render(allMembers), "utf-8")
-
 const render = require("./lib/htmlRenderer");
 const allMembers = [];
 
@@ -31,9 +28,6 @@ function createManager() {
         {
             type: "input",
             message: "What is your email address?",
-            // regular expression
-            // "check value"
-            // validate: "",
             name: "email"
         },
         {
