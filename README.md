@@ -2,6 +2,7 @@
 
  ## Github
   > Username: blin124
+
   > Email: lbx01072004@gmail.com
 
   # Template Engine
@@ -9,9 +10,11 @@
   > This is a template engine that generates a team.html which is a website that consists of user information of manager, engineer/s and intern/s acquired from prompt questions.
 
   ## Screenshots of project / Gifs of project:
-    ![A screenshot of the team.html file within the output folder with example of prompts and answers by user]
-    (../screenshots/html-with-prompts-and-answers.png)
-    ![team.html web-page](../screenshots/webpage.png)
+  - A screenshot of the team.html file within the output folder with example of prompts and answers by user:
+  ![img](/screenshots/html-with-prompts-and-answers.png)
+  - team.html web-page:
+  ![img-two](/screenshots/webpage.png)
+
 
   ## Usage
   - To allow users to be able to create teams on a website.
