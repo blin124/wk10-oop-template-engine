@@ -1,26 +1,28 @@
 // TODO: Write code to define and export the Employee class
 // employee types should all inherit some methods and properties from base class of employee
 
-/*
-name
-id
-email
-*/
+class Employee{
+    constructor(name, id, email) {
+        this.name = name;
+        this.id = id;
+        this.email = email;
+    }
 
-function getName() {
+    getName() {
+        return this.name;
+    }
 
+    getId() {
+        return this.id;
+    }
+
+    getEmail() {
+        return this.email;
+    }
+
+    getRole() {
+        return "Employee";
+    }
 }
 
-function getId() {
-
-}
-
-function getEmail() {
-
-}
-
-// Returns 'Employee'
-function getRole() {
-   
-}
-
+module.exports = Employee;

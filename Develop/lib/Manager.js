@@ -1,8 +1,19 @@
-// TODO: Write code to define and export the Manager class. HINT: This class should inherit from Employee.
+// TODO: Write code to define and export the Employee class
+// employee types should all inherit some methods and properties from base class of employee
 
-// officeNumber
+class Manager extends Employee {
+    constructor(name, id, email, officeNumber) {
+        super(name, id, email);
+        this.officeNumber = officeNumber;
+    }
 
-// Overridden to return 'Manager'
-function getRole() {
-    
+    getRole() {
+        return "Manager";
+    }
+
+    getOfficeNumber() {
+        return this.officeNumber;
+    }
 }
+
+module.exports = Manager;
